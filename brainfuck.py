@@ -49,7 +49,6 @@ class Interpreter(object):
             self.runLine(self.loop[self.loopLevel - 1][1:-1])
 
         del self.loop[self.loopLevel - 1]
-        self.runLoop = True
         self.loopLevel -= 1
 
     def execute(self, f):
@@ -96,7 +95,7 @@ class Interpreter(object):
             self.head += 1
         else:
             raise IndexError("\nIndex out of bounds: '>' at register %d" %
-                   len(self.tape) - 1)
+                             len(self.tape) - 1)
 
     def lt(self):
         """Moves the head backwards one space"""
