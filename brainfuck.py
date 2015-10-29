@@ -92,18 +92,18 @@ class Interpreter(object):
 
     def gt(self):
         """Moves the head forward one space"""
-        try:
+        if self.head < len(self.tape) - 1:
             self.head += 1
-        except:
-            print ("\nIndex out of bounds: '>' at register %d" %
+        else:
+            raise IndexError("\nIndex out of bounds: '>' at register %d" %
                    len(self.tape) - 1)
 
     def lt(self):
         """Moves the head backwards one space"""
-        try:
+        if self.head > 0:
             self.head -= 1
-        except:
-            print "\nIndex out of bounds: '<' at register 0"
+        else:
+            raise IndexError("\nIndex out of bounds: '<' at register 0")
 
     def lb(self):
         """Signals the beginning of a loop, records all commands until
